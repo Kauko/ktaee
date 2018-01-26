@@ -13,11 +13,11 @@ public class TriggerEnabler : MonoBehaviour {
 
     void Update ()
     {
-		if (Input.GetKey(KeyCode.E) && activatorCol.enabled == false)
+		if (Input.GetKeyDown(KeyCode.E) && activatorCol.enabled == false)
         {
             activatorCol.enabled = true;
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.E) && activatorCol.enabled == true)
         {
             activatorCol.enabled = false;
         }

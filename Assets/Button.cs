@@ -4,13 +4,47 @@ using UnityEngine;
 
 public class Button : MonoBehaviour {
 
-    public Light greenLight;
+    public MeshRenderer mesh;
+    public Material m1, m2;
+    public bool ison;
 
-    private void OnTriggerEnter(Collider other)
+
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Activator")
-        {
+       // CheckTrigger(other, Variables.firstrigger, "ButtonBalls");
 
+        if (other.tag == "Activator" && !Variables.lightTrigger && gameObject.name == "ButtonLight")
+        {
+            mesh.material = m2;
+            Variables.lightTrigger = true;
+        }
+        else if (other.tag == "Activator" && Variables.lightTrigger && gameObject.name == "ButtonLight")
+        {
+            mesh.material = m1;
+            Variables.lightTrigger = false;
+        } 
+
+        else if (other.tag == "Activator" && !Variables.lightTrigger && gameObject.name == "ButtonBalls")
+        {
+            Variables.ballTrigger = true;
+        }
+        else if (other.tag == "Activator" && Variables.lightTrigger && gameObject.name == "ButtonBalls")
+        {
+            Variables.ballTrigger = false;        }
+
+    }
+
+    void CheckTrigger(Collider col, bool ison, string name)
+    {
+        if (col.tag == "Activator" && !ison && gameObject.name == name)
+        {
+            mesh.material = m2;
+            ison = true;
+        }
+        else if (col.tag == "Activator" && ison && gameObject.name == name)
+        {
+            mesh.material = m1;
+            ison = false;
         }
     }
 }
