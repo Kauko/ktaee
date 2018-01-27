@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : NetworkBehaviour {
 
     public GameObject ballPrefab;
     public GameObject thisball;

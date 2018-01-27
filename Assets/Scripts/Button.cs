@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Button : MonoBehaviour {
+public class Button : NetworkBehaviour {
 
     public MeshRenderer mesh;
     public Material m1, m2;
